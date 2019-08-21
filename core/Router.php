@@ -4,11 +4,22 @@ namespace App\Core;
 
 class Router
 {
+    /**
+     * Array of registered routes.
+     *
+     * @var array
+     */
     public $routes = [
         'GET' => [],
         'POST' => [],
     ];
 
+    /**
+     * Load router file.
+     *
+     * @param  string $file
+     * @return \App\Core\Reouter
+     */
     public static function load($file)
     {
         $router = new self;
@@ -18,16 +29,34 @@ class Router
         return $router;
     }
 
+    /**
+     * Register a get route.
+     *
+     * @param string $uri
+     * @param string $controller
+     */
     public function get($uri, $controller)
     {
         $this->routes['GET'][$uri] = $controller;
     }
 
+    /**
+     * Register a post route.
+     *
+     * @param string $uri
+     * @param string $controller
+     */
     public function post($uri, $controller)
     {
         $this->routes['POST'][$uri] = $controller;
     }
 
+    /**
+     * Invoke the requestes method on the controller.
+     *
+     * @param string $uri
+     * @param string $requestType
+     */
     public function direct($uri, $requestType)
     {
         if (! array_key_exists($uri, $this->routes[$requestType])) {
@@ -39,6 +68,12 @@ class Router
         );
     }
 
+    /**
+     * Call requested method on the controller.
+     *
+     * @param string $controllerName
+     * @param string $method
+     */
     public function callMethod($controllerName, $method)
     {
         $controller = "App\\Controllers\\{$controllerName}";
