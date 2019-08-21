@@ -4,8 +4,6 @@ use App\Core\App;
 use App\Core\Database\DB;
 use App\Core\Database\QueryBuilder;
 
-require 'vendor/autoload.php';
-
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
