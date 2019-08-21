@@ -1,13 +1,18 @@
 <?php
 
-use App\Core\Router;
+use App\Core\App;
 use App\Core\Database\DB;
+use App\Core\Database\QueryBuilder;
 
 require 'vendor/autoload.php';
-$config = require 'config.php';
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$db = DB::connect($config['database']);
-$router = new Router;
+App::bind('config', require 'config.php');
+
+App::bind('database', new QueryBuilder(
+    DB::connect(App::get('config')['database'])
+));
+
+$query = App::get('database');

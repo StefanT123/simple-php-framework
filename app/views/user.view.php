@@ -1,10 +1,4 @@
-<?php
-    $statement = $db->prepare('SELECT * FROM users');
-
-    $statement->execute();
-
-    $users = $statement->fetchAll(PDO::FETCH_CLASS);
-?>
+<?php $users = $query->getAll('users'); ?>
 
 <form action="/user.post.php" method="POST">
     <label for="name">Enter users name</label>
