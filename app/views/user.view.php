@@ -1,6 +1,8 @@
-<?php $users = $query->getAll('users'); ?>
+<?php require 'partials/header.php'; ?>
 
-<form action="/user.post.php" method="POST">
+<h1>User page</h1>
+
+<form action="/user" method="POST">
     <label for="name">Enter users name</label>
     <input type="text" name="name">
 
@@ -21,3 +23,5 @@
         <li><?= $user->name ?></li>
     <?php } ?>
 </ul>
+
+<?php require 'partials/footer.php' ?>

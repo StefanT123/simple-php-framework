@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use App\Core\App;
 
-class HomeController
+class AboutController
 {
     public function index()
     {
-        return view('home');
+        return view('about');
     }
 }
